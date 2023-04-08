@@ -10,3 +10,7 @@ workflows:
     jobs:
       - split-config/generate-config:
           find-config-regex: .*/\.circleci/config\.yml
+          continuation-parameters: |
+            {
+              "common-my-name": "John"
+            }
