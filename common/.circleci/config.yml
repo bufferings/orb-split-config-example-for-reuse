@@ -1,0 +1,22 @@
+version: 2.1
+
+parameters:
+  common-my-name:
+    type: string
+    default: "World"
+
+executors:
+  common-executor:
+    docker:
+      - image: cimg/base:stable
+
+jobs:
+  common-say-hello:
+    executor: common-executor
+    environment:
+      MY_NAME: << pipeline.parameters.common-my-name >>
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: "echo Hello, ${MY_NAME}! common"
